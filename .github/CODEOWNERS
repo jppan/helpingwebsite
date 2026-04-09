@@ -1,0 +1,13 @@
+* @jppan
+
+/src/app/ @jppan
+/src/components/ui/ @jppan
+/src/lib/ @jppan
+/src/app/globals.css @jppan
+/data/navigation.ts @jppan
+/content/categories.ts @jppan
+/.github/ @jppan
+/next.config.ts @jppan
+
+/content/ @jppan
+/data/featured-guides.ts @jppan
