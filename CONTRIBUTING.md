@@ -42,3 +42,15 @@ Do not edit these without owner review:
 - Confirm any new image field still uses the placeholder system unless a real asset exists
 - Confirm links and slugs still match existing guides
 - Keep route/config changes out of content-only PRs
+
+## Recommended Repository Protections
+
+Owner setup checklist:
+
+- [ ] Protect `main`
+- [ ] Require pull requests into `main`
+- [ ] Require at least 1 approval for `main`
+- [ ] Require build and deploy checks on `main`
+- [ ] Optionally require pull requests into `dev`
+- [ ] Keep collaborator work flowing into `dev`, not `main`
+- [ ] Use `content/**` and selected `data/**` as the default collaborator surface

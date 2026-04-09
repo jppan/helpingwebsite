@@ -37,3 +37,11 @@ This project is intentionally static-export friendly.
 - Dynamic guide pages are generated at build time.
 - `SITE_BASE_PATH` is used for repo-subpath deployment on GitHub Pages.
 - Placeholder images are local render rules, not remote image dependencies.
+
+## Branch And Release Model
+
+- `main` is the stable production branch
+- `dev` is the active integration branch
+- collaborator branches should target `dev`
+- content work should stay out of owner-controlled app-shell and config files when possible
+- GitHub Pages deploys from `main` through the Actions workflow in `.github/workflows/deploy.yml`

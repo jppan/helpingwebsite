@@ -88,6 +88,26 @@ All placeholder image regions are intentionally bright red until replaced.
 3. Open pull requests into `dev`
 4. Merge `dev` into `main` only after review and a clean static export
 
+## Recommended GitHub Settings
+
+Apply these in the GitHub repository settings:
+
+- Protect `main`
+- Require pull requests before merging into `main`
+- Require at least 1 approval for `main`
+- Require status checks on `main`
+- Include the Pages deploy workflow in required checks once it has run successfully at least once
+- Protect `dev` with pull requests if you want tighter collaborator control
+- Restrict direct pushes to `main`
+- Keep `main` as the production branch and `dev` as the integration branch
+
+Recommended contributor flow:
+
+- collaborator branches from `dev`
+- collaborator opens PRs into `dev`
+- owner reviews content and structure separately
+- owner merges `dev` into `main` when production is ready
+
 ## Setup Notes
 
 - Replace `@owner` in `.github/CODEOWNERS` with your real GitHub username
