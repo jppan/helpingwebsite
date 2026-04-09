@@ -86,18 +86,6 @@ export function getSearchItems(): SearchItem[] {
     summary: guide.summary,
     category: getCategoryById(guide.category)?.label ?? guide.category,
     aliases: [...guide.searchAliases, ...guide.symptoms],
-    searchContext: [
-      ...guide.whatThisFixes,
-      ...guide.beforeYouStart,
-      ...guide.tips,
-      ...guide.warnings,
-      guide.fallback.title,
-      guide.fallback.body,
-      ...guide.fallback.actions,
-      ...guide.steps.map((step) => step.title),
-      ...guide.steps.flatMap((step) => step.body),
-      ...(getCategoryById(guide.category)?.searchAliases ?? []),
-    ],
     kind: "guide" as const,
     priority: guide.emergencyRelevant ? 3 : guide.commonFix ? 2 : 1,
   }));
@@ -109,14 +97,6 @@ export function getSearchItems(): SearchItem[] {
     summary: fix.summary,
     category: getCategoryById(fix.category)?.label ?? fix.category,
     aliases: fix.symptomPhrases,
-    searchContext: [
-      ...(getCategoryById(fix.category)?.searchAliases ?? []),
-      getGuideBySlug(fix.linkedGuideSlug)?.title ?? "",
-      ...(getGuideBySlug(fix.linkedGuideSlug)?.searchAliases ?? []),
-      ...(getGuideBySlug(fix.linkedGuideSlug)?.whatThisFixes ?? []),
-      ...(getGuideBySlug(fix.linkedGuideSlug)?.symptoms ?? []),
-      ...(getGuideBySlug(fix.linkedGuideSlug)?.steps.map((step) => step.title) ?? []),
-    ].filter(Boolean),
     kind: "fix" as const,
     priority: 4,
   }));
@@ -128,16 +108,6 @@ export function getSearchItems(): SearchItem[] {
     summary: item.summary,
     category: "Emergency",
     aliases: item.immediateActions,
-    searchContext: [
-      ...item.doNotDo,
-      ...item.nextGuideSlugs
-        .map((slug) => getGuideBySlug(slug))
-        .filter((guide): guide is Guide => Boolean(guide))
-        .flatMap((guide) => [guide.title, ...guide.searchAliases, ...guide.symptoms]),
-      item.severity,
-      item.contactRecommended ? "contact help now" : "",
-      "scam warning urgent security lockout recovery",
-    ].filter(Boolean),
     kind: "emergency" as const,
     priority: 5,
   }));

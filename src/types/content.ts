@@ -128,7 +128,6 @@ export type SearchItem = {
   summary: string;
   category: string;
   aliases: string[];
-  searchContext: string[];
   kind: "guide" | "fix" | "emergency";
   priority: number;
 };
