@@ -1,5 +1,6 @@
 export const primaryNavigation = [
   { href: "/manual", label: "Docs" },
+  { href: "/learn", label: "Pathway" },
   { href: "/fixes", label: "Common Fixes" },
   { href: "/emergency", label: "Emergency" },
   { href: "/about", label: "About Rico" },

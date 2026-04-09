@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookText, LifeBuoy, ShieldAlert, Sparkles } from "lucide-react";
+import { ArrowRight, BookText, LifeBuoy, Route, ShieldAlert, Sparkles } from "lucide-react";
 
 import { ActionTile } from "@/components/content-blocks/action-tile";
 import { EyebrowCard } from "@/components/content-blocks/eyebrow-card";
@@ -24,6 +24,7 @@ import {
   getRicoProfile,
   getSearchItems,
 } from "@/lib/content/collections";
+import { getLearningStages, getTechArticles } from "@/lib/content/learning";
 
 export default function HomePage() {
   const categories = getCategories();
@@ -32,6 +33,8 @@ export default function HomePage() {
   const searchItems = getSearchItems();
   const shortcuts = getHomepageProblemShortcuts();
   const rico = getRicoProfile();
+  const learningStages = getLearningStages();
+  const techArticles = getTechArticles();
 
   return (
     <PageShell className="gap-20">
@@ -169,6 +172,69 @@ export default function HomePage() {
       </MotionReveal>
 
       <MotionReveal>
+        <section className="grid gap-8 rounded-[2rem] border border-accent/15 bg-[linear-gradient(145deg,rgba(110,231,242,0.13),rgba(17,19,21,0.97)_35%,rgba(17,19,21,0.9)_100%)] p-6 sm:p-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+          <div className="space-y-6">
+            <SectionHeading
+              eyebrow="Learning Path"
+              title="Rico also has a route to become genuinely tech capable."
+              description="The new pathway section sequences the fundamentals instead of tossing disconnected articles into a pile. It moves from systems literacy into web design, APIs, deployment, and cybersecurity."
+            />
+            <div className="space-y-4 text-base leading-8 text-secondary">
+              <p>
+                It is built for steady competence, not content hoarding. Every topic points outward to useful
+                documentation and enough practice to prove the idea actually landed.
+              </p>
+              <p>
+                The result is a staged map that can sit beside the manual: one side helps Rico survive broken tech, the
+                other helps him understand how the tech works.
+              </p>
+            </div>
+            <Button asChild variant="primary">
+              <Link href="/learn">
+                Open the pathway
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                label: "Phases",
+                value: learningStages.length,
+                copy: "A staged order so Rico can build context instead of skimming vocabulary.",
+              },
+              {
+                label: "Articles",
+                value: techArticles.length,
+                copy: "Deeper explainers on APIs, IDEs, web design, testing, deployment, and more.",
+              },
+              {
+                label: "With docs",
+                value: "Yes",
+                copy: "Every topic ships with external reading from official docs or durable references.",
+              },
+              {
+                label: "Focus",
+                value: "Practical",
+                copy: "The sequence stays grounded in tasks Rico will actually face on modern projects.",
+              },
+            ].map((item) => (
+              <Card key={item.label} className="border-white/10 bg-background/35">
+                <CardContent className="pt-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-foreground">{item.value}</p>
+                  <p className="mt-3 text-sm leading-7 text-secondary">{item.copy}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </MotionReveal>
+
+      <MotionReveal>
         <PageSection>
           <SectionHeading
             eyebrow="Dashboard"
@@ -228,7 +294,7 @@ export default function HomePage() {
       </MotionReveal>
 
       <MotionReveal>
-        <section className="grid gap-4 md:grid-cols-3">
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {[
             {
               title: "Start with common fixes",
@@ -241,6 +307,12 @@ export default function HomePage() {
               copy: "Read by category when you know roughly what kind of problem you have.",
               href: "/manual",
               icon: BookText,
+            },
+            {
+              title: "Follow the pathway",
+              copy: "Use the staged roadmap and deeper articles to build real technical fluency.",
+              href: "/learn",
+              icon: Route,
             },
             {
               title: "Request help",
