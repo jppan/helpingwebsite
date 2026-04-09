@@ -7,14 +7,8 @@ import { useDeferredValue, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { rankSearchItems } from "@/lib/search";
 import type { SearchItem } from "@/types/content";
-
-function matches(item: SearchItem, query: string) {
-  const haystack = [item.title, item.summary, item.category, ...item.aliases]
-    .join(" ")
-    .toLowerCase();
-  return haystack.includes(query);
-}
 
 export function GlobalSearchPanel({
   items,
@@ -30,12 +24,7 @@ export function GlobalSearchPanel({
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const normalized = deferredQuery.trim().toLowerCase();
-  const results = normalized
-    ? [...items]
-        .filter((item) => matches(item, normalized))
-        .sort((left, right) => right.priority - left.priority)
-        .slice(0, compact ? 4 : 6)
-    : [];
+  const results = normalized ? rankSearchItems(items, normalized).slice(0, compact ? 4 : 6) : [];
 
   return (
     <Card className="border-border/90 bg-panel">
@@ -77,7 +66,7 @@ export function GlobalSearchPanel({
             </div>
           ) : (
             <p className="rounded-2xl border border-border bg-panel-strong p-4 text-sm leading-7 text-secondary">
-              No exact match yet. Try the symptom instead of the technical term.
+              No strong match yet. Try describing the symptom, outcome, or what feels wrong.
             </p>
           )
         ) : null}
