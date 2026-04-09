@@ -172,7 +172,7 @@ export default function HomePage() {
       </MotionReveal>
 
       <MotionReveal>
-        <section className="grid gap-8 rounded-[2rem] border border-accent/15 bg-[linear-gradient(145deg,rgba(110,231,242,0.13),rgba(17,19,21,0.97)_35%,rgba(17,19,21,0.9)_100%)] p-6 sm:p-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+        <section className="learn-stage-surface grid gap-8 rounded-[2rem] border border-accent/15 p-6 sm:p-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
           <div className="space-y-6">
             <SectionHeading
               eyebrow="Learning Path"
@@ -220,7 +220,7 @@ export default function HomePage() {
                 copy: "The sequence stays grounded in tasks Rico will actually face on modern projects.",
               },
             ].map((item) => (
-              <Card key={item.label} className="border-white/10 bg-background/35">
+              <Card key={item.label} className="learn-soft-panel border">
                 <CardContent className="pt-6">
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                     {item.label}

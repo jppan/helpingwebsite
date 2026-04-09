@@ -14,7 +14,7 @@ export function StageCard({
   articleCount: number;
 }) {
   return (
-    <Card className="relative overflow-hidden border-accent/15 bg-[linear-gradient(145deg,rgba(110,231,242,0.12),rgba(17,19,21,0.96)_38%,rgba(255,255,255,0.03))]">
+    <Card className="learn-stage-surface relative overflow-hidden border-accent/15">
       <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
       <CardHeader className="space-y-4">
         <div className="flex flex-wrap items-center gap-3">
@@ -46,7 +46,7 @@ export function StageCard({
           </ul>
         </div>
 
-        <div className="space-y-4 rounded-[1.5rem] border border-white/8 bg-background/35 p-5">
+        <div className="learn-soft-panel space-y-4 rounded-[1.5rem] border p-5">
           <div className="space-y-2">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Support stack</p>
             <div className="space-y-3">

@@ -37,10 +37,7 @@ export function ArticleTemplate({
 
         <div className="grid gap-4 md:grid-cols-2">
           {article.overview.map((paragraph) => (
-            <Card
-              key={paragraph}
-              className="border-accent/15 bg-[linear-gradient(180deg,rgba(110,231,242,0.08),rgba(17,19,21,0.9)_70%)]"
-            >
+            <Card key={paragraph} className="learn-overview-surface border-accent/15">
               <CardContent className="pt-6 text-sm leading-7 text-secondary">{paragraph}</CardContent>
             </Card>
           ))}

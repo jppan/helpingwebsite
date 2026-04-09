@@ -21,9 +21,9 @@ export default function LearnPage() {
       <MotionReveal>
         <section
           id="top"
-          className="relative overflow-hidden rounded-[2.5rem] border border-accent/15 bg-[linear-gradient(160deg,rgba(110,231,242,0.15),rgba(17,19,21,0.98)_28%,rgba(17,19,21,0.92)_100%)] p-6 sm:p-8 lg:p-12"
+          className="learn-hero-surface relative overflow-hidden rounded-[2.5rem] border border-accent/15 p-6 sm:p-8 lg:p-12"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:34px_34px] [mask-image:radial-gradient(circle_at_top_left,black,transparent_72%)]" />
+          <div className="learn-grid-overlay pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(circle_at_top_left,black,transparent_72%)]" />
           <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div className="space-y-6">
               <div className="flex flex-wrap gap-2">
@@ -76,7 +76,7 @@ export default function LearnPage() {
                   copy: "The articles push Rico to verify understanding through drills, not just reading.",
                 },
               ].map((item) => (
-                <Card key={item.title} className="border-white/10 bg-background/35">
+                <Card key={item.title} className="learn-soft-panel">
                   <CardContent className="pt-6">
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                       {item.title}
@@ -137,7 +137,7 @@ export default function LearnPage() {
       </MotionReveal>
 
       <section className="relative space-y-6">
-        <div className="hidden lg:absolute lg:bottom-0 lg:left-10 lg:top-0 lg:block lg:w-px lg:bg-gradient-to-b lg:from-transparent lg:via-accent/30 lg:to-transparent" />
+        <div className="learn-rail hidden lg:absolute lg:bottom-0 lg:left-10 lg:top-0 lg:block lg:w-px" />
         {stages.map((stage, index) => (
           <MotionReveal key={stage.id} delay={index * 0.04}>
             <div className="relative lg:pl-20">
