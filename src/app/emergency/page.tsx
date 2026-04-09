@@ -17,7 +17,7 @@ export default function EmergencyPage() {
   return (
     <PageShell>
       <MotionReveal>
-        <section className="space-y-8 rounded-[2rem] border border-white/10 bg-[#12151a] p-6 sm:p-8">
+        <section className="space-y-8 rounded-[2rem] border border-[color:var(--emergency-border)] bg-[var(--emergency-surface)] p-6 sm:p-8">
           <PageIntro
             eyebrow="Emergency"
             title="Start here if something feels urgent."

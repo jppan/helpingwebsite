@@ -57,7 +57,7 @@ export default function DocsHubPage() {
                 key={category.id}
                 category={category}
                 guideCount={getGuidesByCategory(category.id).length}
-                href={`#${category.slug}`}
+                href={`/manual/category/${category.slug}`}
               />
             ))}
           </div>
@@ -112,7 +112,7 @@ export default function DocsHubPage() {
 
           return (
             <MotionReveal key={category.id}>
-              <section id={category.slug} className="scroll-mt-24 space-y-6">
+              <section className="space-y-6">
                 <div className="flex flex-wrap items-end justify-between gap-4">
                   <SectionHeading
                     eyebrow={category.label}
@@ -120,8 +120,8 @@ export default function DocsHubPage() {
                     description={`Browse the ${category.label.toLowerCase()} guides collected for Rico’s manual.`}
                   />
                   <Button asChild variant="ghost">
-                    <Link href="/fixes">
-                      Common fixes
+                    <Link href={`/manual/category/${category.slug}`}>
+                      Open category page
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>

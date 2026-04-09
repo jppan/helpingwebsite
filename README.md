@@ -45,6 +45,8 @@ Collaborator-safe content areas:
 - `content/emergency.ts`
 - `content/common-fixes.ts`
 - `content/profile.ts`
+- `content/faq.ts`
+- `content/glossary.ts`
 - `data/featured-guides.ts`
 - `docs/CONTENT_EDITOR_GUIDE.md`
 

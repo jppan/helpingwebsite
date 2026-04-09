@@ -182,7 +182,7 @@ export default function HomePage() {
                 key={category.id}
                 category={category}
                 guideCount={getGuidesByCategory(category.id).length}
-                href={`/manual#${category.slug}`}
+                href={`/manual/category/${category.slug}`}
               />
             ))}
           </div>

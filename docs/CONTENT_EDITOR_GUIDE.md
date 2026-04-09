@@ -6,6 +6,8 @@
 - Emergency items in `content/emergency.ts`
 - Common fixes in `content/common-fixes.ts`
 - Rico profile copy in `content/profile.ts`
+- FAQ entries in `content/faq.ts`
+- Glossary entries in `content/glossary.ts`
 - Homepage/docs hub curation in `data/featured-guides.ts`
 
 ## What To Avoid

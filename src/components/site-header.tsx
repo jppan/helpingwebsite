@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { LifeBuoy, Menu, Search, ShieldAlert } from "lucide-react";
+import { LifeBuoy, Search, ShieldAlert } from "lucide-react";
 
+import { MobileNavPanel } from "@/components/mobile-nav-panel";
 import { primaryNavigation } from "@/data/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
@@ -33,6 +35,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
             <Link href="/manual">
               <Search className="h-4 w-4" />
@@ -45,11 +48,7 @@ export function SiteHeader() {
               Emergency
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="sm" className="lg:hidden">
-            <Link href="/manual" aria-label="Open manual navigation">
-              <Menu className="h-4 w-4" />
-            </Link>
-          </Button>
+          <MobileNavPanel />
         </div>
       </div>
     </header>

@@ -1,10 +1,12 @@
 import { categories } from "@/content/categories";
 import { commonFixes } from "@/content/common-fixes";
 import { emergencyItems } from "@/content/emergency";
+import { faqItems } from "@/content/faq";
+import { glossaryTerms } from "@/content/glossary";
 import { guides } from "@/content/guides";
 import { ricoProfile } from "@/content/profile";
 import { docsHubPriorityGuideSlugs, homepageFeaturedGuideSlugs } from "@/data/featured-guides";
-import type { Category, CommonFix, EmergencyItem, Guide, SearchItem } from "@/types/content";
+import type { Category, CommonFix, EmergencyItem, FaqItem, GlossaryTerm, Guide, SearchItem } from "@/types/content";
 
 export function getCategories() {
   return [...categories].sort((left, right) => left.order - right.order);
@@ -28,6 +30,10 @@ export function getCategoryById(id: string) {
 
 export function getCategoryBySlug(slug: string) {
   return categories.find((category) => category.slug === slug);
+}
+
+export function getCategoryRoute(slug: string) {
+  return `/manual/category/${slug}`;
 }
 
 export function getHomepageFeaturedGuides() {
@@ -58,6 +64,18 @@ export function getRelatedGuides(guide: Guide) {
 
 export function getRicoProfile() {
   return ricoProfile;
+}
+
+export function getFaqItems() {
+  return [...faqItems];
+}
+
+export function getGlossaryTerms() {
+  return [...glossaryTerms].sort((left, right) => left.term.localeCompare(right.term));
+}
+
+export function getGlossaryTermBySlug(slug: string) {
+  return glossaryTerms.find((term) => term.slug === slug);
 }
 
 export function getSearchItems(): SearchItem[] {
@@ -123,4 +141,6 @@ export type ContentCollection = {
   guides: Guide[];
   commonFixes: CommonFix[];
   emergencyItems: EmergencyItem[];
+  faqItems?: FaqItem[];
+  glossaryTerms?: GlossaryTerm[];
 };

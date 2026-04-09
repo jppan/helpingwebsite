@@ -108,6 +108,19 @@ export type RicoProfile = {
   portrait: MediaAsset;
 };
 
+export type FaqItem = {
+  question: string;
+  answer: string;
+  relatedGuideSlugs: string[];
+};
+
+export type GlossaryTerm = {
+  term: string;
+  slug: string;
+  plainDefinition: string;
+  relatedGuideSlugs: string[];
+};
+
 export type SearchItem = {
   slug: string;
   href: string;

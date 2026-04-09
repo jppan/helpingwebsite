@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, Lexend } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { AmbientBackdrop } from "@/components/ambient-backdrop";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ThemeScript } from "@/components/theme-script";
 
 import "./globals.css";
 
@@ -26,8 +28,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${lexend.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${lexend.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body>
+        <AmbientBackdrop />
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

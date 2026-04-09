@@ -1,6 +1,7 @@
 import { LifeBuoy, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
+import { ActionTile } from "@/components/content-blocks/action-tile";
 import { PageIntro } from "@/components/layout/page-intro";
 import { PageShell } from "@/components/layout/page-shell";
 import { MotionReveal } from "@/components/motion-reveal";
@@ -70,6 +71,23 @@ export default function HelpPage() {
               </Button>
             </CardContent>
           </Card>
+        </section>
+      </MotionReveal>
+
+      <MotionReveal>
+        <section className="grid gap-4 md:grid-cols-2">
+          <ActionTile
+            title="Read the FAQ"
+            description="Use short answers when the issue is more about understanding the situation than fixing a specific step."
+            href="/faq"
+            icon={LifeBuoy}
+          />
+          <ActionTile
+            title="Check the glossary"
+            description="Use the glossary when a word like browser, storage, or password reset is getting in the way."
+            href="/glossary"
+            icon={ShieldAlert}
+          />
         </section>
       </MotionReveal>
     </PageShell>

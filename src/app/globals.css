@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
   --background: #090a0b;
   --foreground: #f3f6f8;
   --secondary: #c5cdd4;
@@ -14,6 +13,55 @@
   --accent: #6ee7f2;
   --accent-strong: #84f3ff;
   --placeholder-red: #ff2b2b;
+  --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.22);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --backdrop-orb-a: rgba(110, 231, 242, 0.1);
+  --backdrop-orb-b: rgba(255, 255, 255, 0.035);
+  --backdrop-sweep: rgba(110, 231, 242, 0.08);
+  --backdrop-vignette: radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.28) 100%);
+  --button-accent-foreground: #071214;
+  --emergency-surface: #12151a;
+  --emergency-card: #171a20;
+  --emergency-border: rgba(255, 255, 255, 0.14);
+  --emergency-border-strong: rgba(255, 255, 255, 0.28);
+  --emergency-icon-surface: rgba(0, 0, 0, 0.22);
+  --emergency-text: #f3f6f8;
+  --emergency-secondary: #c7d0d8;
+  --emergency-muted: #96a3b1;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --background: #f2f4f3;
+  --foreground: #0b1114;
+  --secondary: #3f4a53;
+  --muted: #67727d;
+  --panel: rgba(255, 255, 255, 0.68);
+  --panel-strong: rgba(255, 255, 255, 0.82);
+  --panel-elevated: rgba(255, 255, 255, 0.92);
+  --border: rgba(17, 28, 36, 0.12);
+  --border-strong: rgba(17, 28, 36, 0.2);
+  --accent: #148ea0;
+  --accent-strong: #0a7382;
+  --shadow-strong: 0 20px 50px rgba(15, 25, 33, 0.09);
+  --grid-line: rgba(16, 32, 43, 0.06);
+  --backdrop-orb-a: rgba(20, 142, 160, 0.16);
+  --backdrop-orb-b: rgba(11, 17, 20, 0.05);
+  --backdrop-sweep: rgba(20, 142, 160, 0.1);
+  --backdrop-vignette: radial-gradient(circle at center, transparent 42%, rgba(255, 255, 255, 0.18) 100%);
+  --button-accent-foreground: #f4f7f6;
+  --emergency-surface: rgba(233, 240, 242, 0.9);
+  --emergency-card: rgba(255, 255, 255, 0.9);
+  --emergency-border: rgba(17, 28, 36, 0.14);
+  --emergency-border-strong: rgba(20, 142, 160, 0.28);
+  --emergency-icon-surface: rgba(20, 142, 160, 0.08);
+  --emergency-text: #0b1114;
+  --emergency-secondary: #42505b;
+  --emergency-muted: #60707c;
 }
 
 @theme inline {
@@ -25,6 +73,7 @@
   --color-panel-strong: var(--panel-strong);
   --color-panel-elevated: var(--panel-elevated);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --font-sans: var(--font-lexend);
   --font-mono: var(--font-ibm-plex-mono);
@@ -40,29 +89,99 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(110, 231, 242, 0.08), transparent 32%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.015), transparent 20%),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-lexend), sans-serif;
   text-rendering: optimizeLegibility;
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
-body::before {
-  content: "";
-  position: fixed;
+a, button, input {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.ambient-grid,
+.ambient-vignette,
+.ambient-sweep,
+.ambient-orb {
+  position: absolute;
   inset: 0;
-  pointer-events: none;
+}
+
+.ambient-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
-  opacity: 0.22;
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image:
+    radial-gradient(circle at center, black 36%, transparent 100%),
+    linear-gradient(to bottom, black, transparent 90%);
+  opacity: 0.75;
+}
+
+.ambient-vignette {
+  background: var(--backdrop-vignette);
+}
+
+.ambient-orb {
+  filter: blur(42px);
+  opacity: 0.8;
+}
+
+.ambient-orb-a {
+  inset: auto auto 10% -8%;
+  height: 32rem;
+  width: 32rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--backdrop-orb-a) 0%, transparent 70%);
+}
+
+.ambient-orb-b {
+  inset: 6% -6% auto auto;
+  height: 28rem;
+  width: 28rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--backdrop-orb-b) 0%, transparent 68%);
+}
+
+.ambient-sweep {
+  inset: -20% auto auto 20%;
+  height: 80vh;
+  width: 60vw;
+  background: radial-gradient(circle at center, var(--backdrop-sweep) 0%, transparent 62%);
+  filter: blur(18px);
+  opacity: 0.7;
+  transform-origin: center;
+}
+
+html[data-theme="light"] .ambient-grid {
+  mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
+}
+
+html[data-theme="light"] body {
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.36), transparent 16%),
+    var(--background);
 }
 
 ::selection {
   background: rgba(110, 231, 242, 0.35);
   color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { IconGlyph } from "@/components/icon-glyph";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -27,9 +28,15 @@ export function CategoryCard({
             </div>
           </CardHeader>
           <CardContent>
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              {guideCount} guides
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                {guideCount} guides
+              </p>
+              <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                Open category page
+                <ArrowRight className="h-3.5 w-3.5" />
+              </p>
+            </div>
           </CardContent>
         </Card>
       </Link>
